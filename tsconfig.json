@@ -20,8 +20,7 @@
     "noImplicitAny": false,
     "isolatedModules": true,
     "outDir": "./dist",
-    "rootDir": "src",
-    "baseUrl": "src",
+    "rootDir": "./src"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

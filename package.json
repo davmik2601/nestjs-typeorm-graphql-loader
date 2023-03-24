@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/davmik2601/nestjs-typeorm-graphql-loader.git"
   },
+  "files": [
+    "dist"
+  ],
   "license": "ISC",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
