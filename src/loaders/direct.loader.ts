@@ -15,7 +15,11 @@ export function directLoader<V>(
   grouper: string | ((entity: V) => any),
 ) {
   return async (ids: readonly any[]): Promise<V[]> => {
-    const selectedFields = getSelectedFields(info, relation.propertyName);
+    const selectedFields = getSelectedFields(
+      info,
+      relation.type,
+      relation.propertyName,
+    );
     const entities = keyBy(
       await connection
         .createQueryBuilder<V>(relation.type, relation.propertyName)

@@ -34,7 +34,11 @@ export class SelfKeyDataloader<V> extends DataLoader<any, V[]> {
       await Promise.all(
         columns.map((column) => {
           const key = `${relation.propertyName}_${column.propertyName}`;
-          const selectedFields = getSelectedFields(info, relation.propertyName);
+          const selectedFields = getSelectedFields(
+            info,
+            relation.type,
+            relation.propertyName,
+          );
 
           query.select([
             ...selectedFields,

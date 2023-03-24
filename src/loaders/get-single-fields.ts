@@ -1,8 +1,10 @@
 import { resolveSelections } from '../graphql-info/resolve-selections';
 import { GraphQLResolveInfo } from 'graphql';
+import {EntityTarget, getRepository} from "typeorm";
 
 export function getSelectedFields(
   info: GraphQLResolveInfo,
+  entityClass: EntityTarget<any>,
   relationPropertyName: string,
   fieldsType = ['*.*'],
 ) {
@@ -10,5 +12,11 @@ export function getSelectedFields(
     [{ field: info.fieldName, selections: fieldsType }],
     info,
   );
-  return myFields.map((field) => `${relationPropertyName}.${field}`);
+  const selectedFields = myFields.map((field) => `${relationPropertyName}.${field}`);
+
+  const attributes = getRepository(entityClass).metadata;
+
+  console.log('attributes ------> ', attributes);
+
+  return selectedFields;
 }
