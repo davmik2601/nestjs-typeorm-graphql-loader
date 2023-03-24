@@ -19,7 +19,7 @@ export function getSelectedFields(
   console.log('selectedFields ------> ', selectedFields);
 
   const attributes = getRepository(entityClass).metadata.columns.map(
-    (column) => column.propertyName,
+    (column) => `${relationPropertyName}.${column.propertyName}`,
   );
 
   console.log('attributes ------> ', attributes);
@@ -28,7 +28,7 @@ export function getSelectedFields(
     attributes.includes(field),
   );
 
-  console.log('attributes ------> ', commonFields);
+  console.log('commonFields ------> ', commonFields);
 
   return commonFields;
 }
