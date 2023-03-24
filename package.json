@@ -3,7 +3,10 @@
   "description": "A library to utilize the graphql-dataloader with nestjs and typeorm.",
   "version": "1.0.0",
   "author": "davmik2601",
-  "repository": "https://github.com/tailoredmedia/backend-nx-skeleton",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davmik2601/nestjs-typeorm-graphql-loader.git"
+  },
   "license": "ISC",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
