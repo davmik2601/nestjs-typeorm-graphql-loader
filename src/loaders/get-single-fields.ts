@@ -1,6 +1,6 @@
 import { resolveSelections } from '../graphql-info/resolve-selections';
 import { GraphQLResolveInfo } from 'graphql';
-import {EntityTarget, getRepository} from "typeorm";
+import { EntityTarget, getRepository } from 'typeorm';
 
 export function getSelectedFields(
   info: GraphQLResolveInfo,
@@ -12,11 +12,23 @@ export function getSelectedFields(
     [{ field: info.fieldName, selections: fieldsType }],
     info,
   );
-  const selectedFields = myFields.map((field) => `${relationPropertyName}.${field}`);
+  const selectedFields = myFields.map(
+    (field) => `${relationPropertyName}.${field}`,
+  );
 
-  const attributes = getRepository(entityClass).metadata;
+  console.log('selectedFields ------> ', selectedFields);
+
+  const attributes = getRepository(entityClass).metadata.columns.map(
+    (column) => column.propertyName,
+  );
 
   console.log('attributes ------> ', attributes);
 
-  return selectedFields;
+  const commonFields = selectedFields.filter((field) =>
+    attributes.includes(field),
+  );
+
+  console.log('attributes ------> ', commonFields);
+
+  return commonFields;
 }
