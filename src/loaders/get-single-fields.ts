@@ -24,11 +24,17 @@ export function getSelectedFields(
 
   console.log('attributes ------> ', attributes);
 
-  const commonFields = selectedFields.filter((field) =>
-    attributes.includes(field),
-  );
+  const diff = selectedFields.filter((field) => !attributes.includes(field));
 
-  console.log('commonFields ------> ', commonFields);
+  console.log('diff ------> ', selectedFields);
 
-  return commonFields;
+  const common = diff.length
+    ? attributes.filter(
+      (attr) => selectedFields.includes(attr) || attr.startsWith('_'),
+    )
+    : selectedFields.filter((field) => attributes.includes(field));
+
+  console.log('common ------> ', common);
+
+  return common;
 }
