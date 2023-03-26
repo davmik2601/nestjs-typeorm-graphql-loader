@@ -16,25 +16,26 @@ export function getSelectedFields(
     (field) => `${relationPropertyName}.${field}`,
   );
 
-  console.log('selectedFields ------> ', selectedFields);
+  // console.log('selectedFields ------> ', selectedFields);
 
   const attributes = getRepository(entityClass).metadata.columns.map(
     (column) => `${relationPropertyName}.${column.propertyName}`,
   );
 
-  console.log('attributes ------> ', attributes);
+  // console.log('attributes ------> ', attributes);
 
   const diff = selectedFields.filter((field) => !attributes.includes(field));
 
-  console.log('diff ------> ', selectedFields);
+  // console.log('diff ------> ', diff);
 
   const common = diff.length
     ? attributes.filter(
-      (attr) => selectedFields.includes(attr) || attr.startsWith('_'),
+      (attr) =>
+        selectedFields.includes(attr) || attr.split('.')[1].startsWith('_'),
     )
     : selectedFields.filter((field) => attributes.includes(field));
 
-  console.log('common ------> ', common);
+  // console.log('common ------> ', common);
 
   return common;
 }
