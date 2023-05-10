@@ -146,7 +146,7 @@ export class CompanyEntity extends BaseEntityWithPrimary<CompanyEntity> {
 
   // relations-incoming
 
-  @Field(() => CorporationEntity, { middleware: [TypeormLoaderMiddleware] })
+  @Field(() => CorporationEntity)
   @ManyToOne(() => CorporationEntity, (corporation) => corporation.companies, {
     onUpdate: 'CASCADE',
     onDelete: 'RESTRICT'
