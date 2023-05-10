@@ -1,6 +1,5 @@
 export interface PolymorphicLoaderOptions {
   entityType: string | number,
-  entityId: number | string,
 }
 
 /**
