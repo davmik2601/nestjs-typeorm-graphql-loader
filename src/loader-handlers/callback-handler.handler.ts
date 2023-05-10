@@ -4,7 +4,7 @@ import type { Connection } from 'typeorm';
 import type { ColumnMetadata } from 'typeorm/metadata/ColumnMetadata';
 import type { RelationMetadata } from 'typeorm/metadata/RelationMetadata';
 
-import { DATA_LOADER_CONTEXT_KEY } from '../constants/context.constants';
+import { DATA_LOADER_CONTEXT_KEY } from '../constants';
 import type { Context } from '../interfaces/context.interface';
 
 /**

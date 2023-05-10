@@ -1,4 +1,4 @@
-import { resolveSelections } from '../graphql-info/resolve-selections';
+import { resolveSelections } from '../graphql-info';
 import { GraphQLResolveInfo } from 'graphql';
 import { EntityTarget, getRepository } from 'typeorm';
 

@@ -4,8 +4,8 @@ import type {
   NextFn,
 } from '@nestjs/graphql';
 
-import { DATA_LOADER_CONTEXT_KEY } from '../constants/context.constants';
-import { TYPEORM_DATALOADER_EXTENSION_FIELD } from '../constants/extension-field.constants';
+import { DATA_LOADER_CONTEXT_KEY } from '../constants';
+import { TYPEORM_DATALOADER_EXTENSION_FIELD } from '../constants';
 import type { Context } from '../interfaces/context.interface';
 import type { Extensions } from '../interfaces/extensions.interface';
 import {
@@ -13,7 +13,7 @@ import {
   handleOneToOneNotOwnerWithSelfKey,
   handleToMany,
   handleToOne,
-} from '../loader-handlers/index';
+} from '../loader-handlers';
 
 /**
  * This middleware checks and processes for the subfields of a parent entity that should be resolved by the data loader.
@@ -64,6 +64,7 @@ export const TypeormLoaderMiddleware: FieldMiddleware = async (
           context,
           info,
           relation,
+          args.options,
         )
       : handleToMany(args.keyFunc, source, context, info, relation);
   } else if (relation.isOneToOneNotOwner) {
@@ -74,6 +75,7 @@ export const TypeormLoaderMiddleware: FieldMiddleware = async (
           context,
           info,
           relation,
+          args.options,
         )
       : handleToOne(args.keyFunc, source, context, info, relation);
   } else if (relation.isManyToMany) {

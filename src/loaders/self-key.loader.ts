@@ -4,6 +4,7 @@ import type { Connection } from 'typeorm';
 import type { RelationMetadata } from 'typeorm/metadata/RelationMetadata';
 import type { SelfKeyFunc } from '../interfaces/typeorm-loader-handler.interface';
 import { getSelectedFields } from './get-single-fields';
+import {TypeormLoaderOptions} from "../interfaces/typeorm-loader.interface";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const DataLoader = require('dataloader');
 
@@ -16,6 +17,7 @@ export class SelfKeyDataloader<V> extends DataLoader<any, V[]> {
     relation: RelationMetadata,
     connection: Connection,
     selfKeyFunc: SelfKeyFunc,
+    options: TypeormLoaderOptions,
   ) {
     super(async (ids) => {
       const columns = relation.inverseRelation?.joinColumns;
@@ -44,6 +46,13 @@ export class SelfKeyDataloader<V> extends DataLoader<any, V[]> {
             ...selectedFields,
             `${relation.propertyName}.${column.propertyPath}`,
           ]);
+
+          if (options?.polymorphic) {
+            query = query.andWhere(
+              `${relation.propertyName}.entityType = :entityType`,
+              { entityType: options.polymorphic.entityType }
+            )
+          }
 
           query = query.andWhere(
             `${relation.propertyName}.${column.propertyPath} IN (:...${key})`,

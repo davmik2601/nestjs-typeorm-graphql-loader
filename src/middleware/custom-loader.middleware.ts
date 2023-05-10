@@ -6,8 +6,8 @@ import type {
 import DataLoader from 'dataloader';
 import Container from 'typedi';
 
-import { DATA_LOADER_CONTEXT_KEY } from '../constants/context.constants';
-import { CUSTOM_DATALOADER_EXTENSION_FIELD } from '../constants/extension-field.constants';
+import { DATA_LOADER_CONTEXT_KEY } from '../constants';
+import { CUSTOM_DATALOADER_EXTENSION_FIELD } from '../constants';
 import type { Context } from '../interfaces/context.interface';
 import type { Extensions } from '../interfaces/extensions.interface';
 
