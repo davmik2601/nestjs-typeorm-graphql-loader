@@ -1,7 +1,7 @@
 {
   "name": "nestjs-graphql-typeorm-loader",
   "description": "A library to utilize the graphql-dataloader with nestjs and typeorm.",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "author": "davmik2601",
   "repository": {
     "type": "git",
