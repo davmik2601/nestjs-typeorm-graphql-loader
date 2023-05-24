@@ -7,15 +7,14 @@ This lib is a modified, improved version of the `@webundsoehne/nestjs-graphql-ty
 The purpose of this is to automatically solve the Graphql n+1 problem with Dataloader.
 Also be able to use Polymorphic associations during load.
 
-❗️ ❗️ ❗️
--
+⚠️
 Besides this lib solves Graphql n+1 (with Dataloader) -The specificity of this lib is also that it selects only the
 fields requested by graphql.
 And you won't need to use `@ResolveFiled()` for relations.
 But note that if you have custom fields that use other fields (from `@ResolveField()` or from other functions), those
 used other fields must start with  `_`  (ex: `_myField`) , otherwise similar custom fields will not work․
 
--
+If relation is exists (for example we get it with JOIN), then the loader will not get the relation.
 
 # What it does
 
