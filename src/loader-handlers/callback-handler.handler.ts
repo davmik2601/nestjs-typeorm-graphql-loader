@@ -1,11 +1,11 @@
 import type DataLoader from 'dataloader';
 import Container from 'typedi';
-import type { Connection } from 'typeorm';
-import type { ColumnMetadata } from 'typeorm/metadata/ColumnMetadata';
-import type { RelationMetadata } from 'typeorm/metadata/RelationMetadata';
+import type {Connection} from 'typeorm';
+import type {ColumnMetadata} from 'typeorm/metadata/ColumnMetadata';
+import type {RelationMetadata} from 'typeorm/metadata/RelationMetadata';
 
-import { DATA_LOADER_CONTEXT_KEY } from '../constants';
-import type { Context } from '../interfaces/context.interface';
+import {DATA_LOADER_CONTEXT_KEY} from '../constants';
+import type {Context} from '../interfaces/context.interface';
 
 /**
  * Handles the all data loader handlers common functionality to check the connection and

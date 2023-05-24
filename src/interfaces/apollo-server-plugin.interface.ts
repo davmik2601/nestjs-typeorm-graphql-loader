@@ -1,4 +1,4 @@
-import type { Connection } from 'typeorm';
+import type {Connection} from 'typeorm';
 
 /**
  * Options for the dataloader interceptor and the apollo server plugin.

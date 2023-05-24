@@ -1,10 +1,10 @@
-import type { RelationMetadata } from 'typeorm/metadata/RelationMetadata';
+import type {RelationMetadata} from 'typeorm/metadata/RelationMetadata';
 
-import { handler } from './callback-handler.handler';
-import type { Context } from '../interfaces/context.interface';
-import type { SelfKeyFunc } from '../interfaces/typeorm-loader-handler.interface';
-import { SelfKeyDataloader } from '../loaders';
-import { GraphQLResolveInfo } from 'graphql';
+import {handler} from './callback-handler.handler';
+import type {Context} from '../interfaces/context.interface';
+import type {SelfKeyFunc} from '../interfaces/typeorm-loader-handler.interface';
+import {SelfKeyDataloader} from '../loaders';
+import {GraphQLResolveInfo} from 'graphql';
 import {TypeormLoaderOptions} from "../interfaces/typeorm-loader.interface";
 
 export async function handleOneToOneNotOwnerWithSelfKey<V>(

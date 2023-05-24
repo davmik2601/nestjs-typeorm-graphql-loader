@@ -1,10 +1,12 @@
-import type { RelationMetadata } from 'typeorm/metadata/RelationMetadata';
+import type {RelationMetadata} from 'typeorm/metadata/RelationMetadata';
 
-import { handler } from './callback-handler.handler';
-import type { Context } from '../interfaces/context.interface';
-import type { ForeignKeyFunc } from '../interfaces/typeorm-loader-handler.interface';
-import { ToManyDataloader } from '../loaders';
-import { GraphQLResolveInfo } from 'graphql';
+import {handler} from './callback-handler.handler';
+import type {Context} from '../interfaces/context.interface';
+import type {
+  ForeignKeyFunc
+} from '../interfaces/typeorm-loader-handler.interface';
+import {ToManyDataloader} from '../loaders';
+import {GraphQLResolveInfo} from 'graphql';
 
 export async function handleToMany<V>(
   foreignKeyFunc: ForeignKeyFunc,

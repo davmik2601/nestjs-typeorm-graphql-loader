@@ -6,10 +6,10 @@
 // *                                                                         *
 // ***************************************************************************
 
-import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-import { GqlExecutionContext } from '@nestjs/graphql';
-import { resolveSelections } from './resolve-selections';
-import { FieldSelections } from './helpers';
+import {createParamDecorator, ExecutionContext} from '@nestjs/common';
+import {GqlExecutionContext} from '@nestjs/graphql';
+import {resolveSelections} from './resolve-selections';
+import {FieldSelections} from './helpers';
 
 export const Relations = (withParent = false) => {
   const fields: (string | FieldSelections)[] = ['**.**'];
@@ -34,14 +34,12 @@ function createDecoratorFunction(
   fields?: (string | FieldSelections)[],
   withParent = false,
 ) {
-  return createParamDecorator<
-    {
-      fields?: (string | FieldSelections)[];
-      withParent: boolean;
-    },
+  return createParamDecorator<{
+    fields?: (string | FieldSelections)[];
+    withParent: boolean;
+  },
     ExecutionContext,
-    string[]
-    >(({ fields, withParent }, context) => {
+    string[]>(({fields, withParent}, context) => {
     const ctx = GqlExecutionContext.create(context);
     const info = ctx.getInfo();
 
@@ -66,5 +64,5 @@ function createDecoratorFunction(
       ],
       info,
     );
-  })({ fields, withParent });
+  })({fields, withParent});
 }

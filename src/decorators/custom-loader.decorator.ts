@@ -1,9 +1,13 @@
-import { LazyMetadataStorage } from '@nestjs/graphql/dist/schema-builder/storages/lazy-metadata.storage';
-import { TypeMetadataStorage } from '@nestjs/graphql/dist/schema-builder/storages/type-metadata.storage';
+import {
+  LazyMetadataStorage
+} from '@nestjs/graphql/dist/schema-builder/storages/lazy-metadata.storage';
+import {
+  TypeMetadataStorage
+} from '@nestjs/graphql/dist/schema-builder/storages/type-metadata.storage';
 import type DataLoader from 'dataloader';
 
-import { CUSTOM_DATALOADER_EXTENSION_FIELD } from '../constants';
-import type { BatchLoadFn } from '../interfaces/batch-loader.interface';
+import {CUSTOM_DATALOADER_EXTENSION_FIELD} from '../constants';
+import type {BatchLoadFn} from '../interfaces/batch-loader.interface';
 
 /**
  * Add data required for a given field or field-resolver for custom dataloader.
@@ -21,7 +25,7 @@ export function CustomLoaderExtension<K, V, C = K>(
         fieldName: key as string,
         value: {
           [CUSTOM_DATALOADER_EXTENSION_FIELD]: {
-            args: { batchLoadFn, options },
+            args: {batchLoadFn, options},
             target,
             key,
           },

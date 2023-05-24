@@ -13,17 +13,17 @@ export interface FieldSelections {
 }
 
 export function getGraphQLResolveInfo(query: string) {
-  const { definitions } = parse(query);
+  const {definitions} = parse(query);
   const operation = definitions.find(
-    ({ kind }) => kind === 'OperationDefinition',
+    ({kind}) => kind === 'OperationDefinition',
   );
 
   const {
-    selectionSet: { selections },
+    selectionSet: {selections},
   } = operation as OperationDefinitionNode;
 
   const fragments = definitions
-    .filter(({ kind }) => kind === 'FragmentDefinition')
+    .filter(({kind}) => kind === 'FragmentDefinition')
     .reduce(
       (result, current) => ({
         ...result,

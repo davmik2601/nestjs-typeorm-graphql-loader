@@ -1,13 +1,13 @@
-import { GraphQLResolveInfo, SelectionNode } from 'graphql';
-import { getFieldNode } from './get-field-node';
-import { FieldMap, FragmentDict } from './helpers';
+import {GraphQLResolveInfo, SelectionNode} from 'graphql';
+import {getFieldNode} from './get-field-node';
+import {FieldMap, FragmentDict} from './helpers';
 
 export const resolveFieldMap = (
   info: Pick<GraphQLResolveInfo, 'fieldNodes' | 'fragments'>,
   deep = true,
   parent: string | string[] = [],
 ) => {
-  const { fieldNodes, fragments } = info;
+  const {fieldNodes, fragments} = info;
   const parents = Array.isArray(parent) ? [...parent] : parent.split('.');
 
   if (parents.length) {

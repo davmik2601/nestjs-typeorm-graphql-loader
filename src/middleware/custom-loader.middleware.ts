@@ -6,22 +6,22 @@ import type {
 import DataLoader from 'dataloader';
 import Container from 'typedi';
 
-import { DATA_LOADER_CONTEXT_KEY } from '../constants';
-import { CUSTOM_DATALOADER_EXTENSION_FIELD } from '../constants';
-import type { Context } from '../interfaces/context.interface';
-import type { Extensions } from '../interfaces/extensions.interface';
+import {DATA_LOADER_CONTEXT_KEY} from '../constants';
+import {CUSTOM_DATALOADER_EXTENSION_FIELD} from '../constants';
+import type {Context} from '../interfaces/context.interface';
+import type {Extensions} from '../interfaces/extensions.interface';
 
 /**
  * This middleware checks and processes for the subfields of a parent entity that should be resolved by the data loader.
  * It will automatically run the function that is embedded inside the DATA_LOADER extension field.
  */
 export const CustomLoaderMiddleware: FieldMiddleware = async (
-  { context, info }: MiddlewareContext<any, Context>,
+  {context, info}: MiddlewareContext<any, Context>,
   next: NextFn,
 ) => {
   const extensions = info.parentType.getFields()[info.fieldName].extensions?.[
     CUSTOM_DATALOADER_EXTENSION_FIELD
-  ] as Extensions['CUSTOM_DATALOADER_EXTENSION_FIELD'];
+    ] as Extensions['CUSTOM_DATALOADER_EXTENSION_FIELD'];
 
   const args = extensions?.args;
 
@@ -33,7 +33,7 @@ export const CustomLoaderMiddleware: FieldMiddleware = async (
     extensions.target.constructor.name
   }#${extensions.key.toString()}`;
 
-  const { requestId } = context[DATA_LOADER_CONTEXT_KEY];
+  const {requestId} = context[DATA_LOADER_CONTEXT_KEY];
 
   const container = Container.of(requestId);
 
@@ -41,7 +41,7 @@ export const CustomLoaderMiddleware: FieldMiddleware = async (
     container.set(
       serviceId,
       new DataLoader(
-        (keys) => args.batchLoadFn(keys, { context }),
+        (keys) => args.batchLoadFn(keys, {context}),
         args?.options,
       ),
     );

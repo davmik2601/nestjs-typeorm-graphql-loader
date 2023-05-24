@@ -1,7 +1,7 @@
-import { GraphQLResolveInfo } from 'graphql';
-import type { Connection } from 'typeorm';
-import type { RelationMetadata } from 'typeorm/metadata/RelationMetadata';
-import { directLoader } from './direct.loader';
+import {GraphQLResolveInfo} from 'graphql';
+import type {Connection} from 'typeorm';
+import type {RelationMetadata} from 'typeorm/metadata/RelationMetadata';
+import {directLoader} from './direct.loader';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const DataLoader = require('dataloader');
 

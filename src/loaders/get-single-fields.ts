@@ -1,6 +1,6 @@
-import { resolveSelections } from '../graphql-info';
-import { GraphQLResolveInfo } from 'graphql';
-import { EntityTarget, getRepository } from 'typeorm';
+import {resolveSelections} from '../graphql-info';
+import {GraphQLResolveInfo} from 'graphql';
+import {EntityTarget, getRepository} from 'typeorm';
 
 export function getSelectedFields(
   info: GraphQLResolveInfo,
@@ -9,7 +9,7 @@ export function getSelectedFields(
   fieldsType = ['*.*'],
 ) {
   const myFields = resolveSelections(
-    [{ field: info.fieldName, selections: fieldsType }],
+    [{field: info.fieldName, selections: fieldsType}],
     info,
   );
   const selectedFields = myFields.map(

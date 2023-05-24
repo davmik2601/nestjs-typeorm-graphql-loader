@@ -1,10 +1,10 @@
-import { FieldNode, GraphQLResolveInfo, SelectionNode } from 'graphql';
+import {FieldNode, GraphQLResolveInfo, SelectionNode} from 'graphql';
 
 export const getFieldNode = (
   info: Pick<GraphQLResolveInfo, 'fieldNodes' | 'fragments'>,
   path: string | string[] = [],
 ): FieldNode | undefined => {
-  const { fieldNodes, fragments } = info;
+  const {fieldNodes, fragments} = info;
   const fields = Array.isArray(path) ? [...path] : path.split('.');
 
   let selectionNodes: SelectionNode[] = [...fieldNodes];

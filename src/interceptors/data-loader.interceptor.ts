@@ -3,21 +3,24 @@ import type {
   ExecutionContext,
   NestInterceptor,
 } from '@nestjs/common';
-import { Injectable } from '@nestjs/common';
-import { GqlExecutionContext } from '@nestjs/graphql';
-import type { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { Container } from 'typedi';
-import { v4 as uuidv4 } from 'uuid';
+import {Injectable} from '@nestjs/common';
+import {GqlExecutionContext} from '@nestjs/graphql';
+import type {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {Container} from 'typedi';
+import {v4 as uuidv4} from 'uuid';
 
-import { DATA_LOADER_CONTEXT_KEY } from '../constants';
+import {DATA_LOADER_CONTEXT_KEY} from '../constants';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import type { ApolloServerLoaderPluginOptions } from '../interfaces/apollo-server-plugin.interface';
-import type { Context } from '../interfaces/context.interface';
+import type {
+  ApolloServerLoaderPluginOptions
+} from '../interfaces/apollo-server-plugin.interface';
+import type {Context} from '../interfaces/context.interface';
 
 @Injectable()
 export class DataLoaderInterceptor implements NestInterceptor {
-  constructor(private options?: ApolloServerLoaderPluginOptions) {}
+  constructor(private options?: ApolloServerLoaderPluginOptions) {
+  }
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const ctx: Context = GqlExecutionContext.create(context).getContext();

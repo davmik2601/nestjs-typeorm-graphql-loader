@@ -1,9 +1,9 @@
-import type { Dictionary } from 'lodash';
-import { keyBy } from 'lodash';
-import type { Connection } from 'typeorm';
-import type { RelationMetadata } from 'typeorm/metadata/RelationMetadata';
-import { GraphQLResolveInfo } from 'graphql';
-import { getSelectedFields } from './get-single-fields';
+import type {Dictionary} from 'lodash';
+import {keyBy} from 'lodash';
+import type {Connection} from 'typeorm';
+import type {RelationMetadata} from 'typeorm/metadata/RelationMetadata';
+import {GraphQLResolveInfo} from 'graphql';
+import {getSelectedFields} from './get-single-fields';
 
 /**
  * A shared component for handling the end result of the query.

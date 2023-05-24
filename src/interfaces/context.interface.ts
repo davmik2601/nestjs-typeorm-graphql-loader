@@ -1,4 +1,4 @@
-import type { Connection } from 'typeorm';
+import type {Connection} from 'typeorm';
 
 /**
  * The custom context entry that this plugin runs up on to inject the connection,

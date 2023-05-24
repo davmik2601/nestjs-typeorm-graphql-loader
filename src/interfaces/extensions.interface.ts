@@ -1,8 +1,8 @@
 import type DataLoader from 'dataloader';
 
-import type { BatchLoadFn } from './batch-loader.interface';
-import type { KeyFunc } from './typeorm-loader-handler.interface';
-import type { TypeormLoaderOptions } from './typeorm-loader.interface';
+import type {BatchLoadFn} from './batch-loader.interface';
+import type {KeyFunc} from './typeorm-loader-handler.interface';
+import type {TypeormLoaderOptions} from './typeorm-loader.interface';
 import type {
   CUSTOM_DATALOADER_EXTENSION_FIELD,
   TYPEORM_DATALOADER_EXTENSION_FIELD,

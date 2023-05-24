@@ -1,9 +1,15 @@
-import { LazyMetadataStorage } from '@nestjs/graphql/dist/schema-builder/storages/lazy-metadata.storage';
-import { TypeMetadataStorage } from '@nestjs/graphql/dist/schema-builder/storages/type-metadata.storage';
+import {
+  LazyMetadataStorage
+} from '@nestjs/graphql/dist/schema-builder/storages/lazy-metadata.storage';
+import {
+  TypeMetadataStorage
+} from '@nestjs/graphql/dist/schema-builder/storages/type-metadata.storage';
 
-import { TYPEORM_DATALOADER_EXTENSION_FIELD } from '../constants';
-import type { KeyFunc } from '../interfaces/typeorm-loader-handler.interface';
-import type { TypeormLoaderOptions } from '../interfaces/typeorm-loader.interface';
+import {TYPEORM_DATALOADER_EXTENSION_FIELD} from '../constants';
+import type {KeyFunc} from '../interfaces/typeorm-loader-handler.interface';
+import type {
+  TypeormLoaderOptions
+} from '../interfaces/typeorm-loader.interface';
 
 /**
  * Add data required for a given field or field-resolver for typeorm dataloader.
@@ -21,7 +27,7 @@ export function TypeormLoaderExtension(
         fieldName: key as string,
         value: {
           [TYPEORM_DATALOADER_EXTENSION_FIELD]: {
-            args: { keyFunc, options },
+            args: {keyFunc, options},
             target,
             key,
           },

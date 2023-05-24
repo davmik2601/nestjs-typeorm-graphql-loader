@@ -1,9 +1,9 @@
-import { GraphQLResolveInfo } from 'graphql';
-import { groupBy } from 'lodash';
-import type { Connection } from 'typeorm';
-import type { RelationMetadata } from 'typeorm/metadata/RelationMetadata';
-import type { SelfKeyFunc } from '../interfaces/typeorm-loader-handler.interface';
-import { getSelectedFields } from './get-single-fields';
+import {GraphQLResolveInfo} from 'graphql';
+import {groupBy} from 'lodash';
+import type {Connection} from 'typeorm';
+import type {RelationMetadata} from 'typeorm/metadata/RelationMetadata';
+import type {SelfKeyFunc} from '../interfaces/typeorm-loader-handler.interface';
+import {getSelectedFields} from './get-single-fields';
 import {TypeormLoaderOptions} from "../interfaces/typeorm-loader.interface";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const DataLoader = require('dataloader');
@@ -50,13 +50,13 @@ export class SelfKeyDataloader<V> extends DataLoader<any, V[]> {
           if (options?.polymorphic) {
             query = query.andWhere(
               `${relation.propertyName}.entityType = :entityType`,
-              { entityType: options.polymorphic.entityType }
+              {entityType: options.polymorphic.entityType}
             )
           }
 
           query = query.andWhere(
             `${relation.propertyName}.${column.propertyPath} IN (:...${key})`,
-            { [key]: ids },
+            {[key]: ids},
           );
         }),
       );

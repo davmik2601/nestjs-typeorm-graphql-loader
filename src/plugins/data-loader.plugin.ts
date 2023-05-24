@@ -7,15 +7,18 @@ import type {
   WithRequired,
   GraphQLRequestContextWillSendResponse,
 } from 'apollo-server-plugin-base';
-import { Container } from 'typedi';
-import { v4 as uuidv4 } from 'uuid';
+import {Container} from 'typedi';
+import {v4 as uuidv4} from 'uuid';
 
-import { DATA_LOADER_CONTEXT_KEY } from '../constants';
-import type { ApolloServerLoaderPluginOptions } from '../interfaces/apollo-server-plugin.interface';
-import type { Context } from '../interfaces/context.interface';
+import {DATA_LOADER_CONTEXT_KEY} from '../constants';
+import type {
+  ApolloServerLoaderPluginOptions
+} from '../interfaces/apollo-server-plugin.interface';
+import type {Context} from '../interfaces/context.interface';
 
 export class ApolloServerDataLoaderPlugin implements ApolloServerPlugin {
-  constructor(private options?: ApolloServerLoaderPluginOptions) {}
+  constructor(private options?: ApolloServerLoaderPluginOptions) {
+  }
 
   // for graphql 16+ this expect a return of promise for each case
   async requestDidStart(): Promise<GraphQLRequestListener<BaseContext>> {
@@ -23,10 +26,8 @@ export class ApolloServerDataLoaderPlugin implements ApolloServerPlugin {
 
     return {
       didResolveSource: async (
-        requestContext: WithRequired<
-          GraphQLRequestContext<Context>,
-          'queryHash' | 'source' | 'metrics'
-        >,
+        requestContext: WithRequired<GraphQLRequestContext<Context>,
+          'queryHash' | 'source' | 'metrics'>,
       ): Promise<void> => {
         requestContext.context[DATA_LOADER_CONTEXT_KEY] = {
           requestId: uuidv4(),
