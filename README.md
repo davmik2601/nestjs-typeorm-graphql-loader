@@ -30,9 +30,9 @@ If relation is exists (for example we get it with JOIN), then the loader will no
 ## Installation
 
 ```bash
-$ npm install nestjs-typeorm-graphql-loader
+$ npm install nestjs-graphql-typeorm-loader
 or 
-$ yarn add nestjs-typeorm-graphql-loader
+$ yarn add nestjs-graphql-typeorm-loader
 ```
 
 ## Global Setup for Project
