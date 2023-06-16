@@ -14,6 +14,7 @@ import {
   handleToMany,
   handleToOne,
 } from '../loader-handlers';
+import {handleManyToMany} from '../loader-handlers/many-to-many.handler';
 
 /**
  * This middleware checks and processes for the subfields of a parent entity that should be resolved by the data loader.
@@ -89,7 +90,7 @@ export const TypeormLoaderMiddleware: FieldMiddleware = async (
       )
       : handleToOne(args.keyFunc, source, context, info, relation);
   } else if (relation.isManyToMany) {
-    return handleToMany(args.keyFunc, source, context, info, relation);
+    return handleManyToMany(args.keyFunc, source, context, info, relation);
   } else {
     return next();
   }

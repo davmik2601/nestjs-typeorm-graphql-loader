@@ -2,7 +2,10 @@
   "name": "nestjs-graphql-typeorm-loader",
   "description": "A library to utilize the graphql-dataloader with nestjs and typeorm.",
   "version": "1.0.17",
-  "author": "davmik2601",
+  "author": {
+    "name": "David Mikayelyan",
+    "email": "davmik2601@gmail.com"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/davmik2601/nestjs-typeorm-graphql-loader.git"
@@ -60,7 +63,7 @@
     "mikro-orm": "^5.5.0",
     "rimraf": "^3.0.2",
     "sqlite3": "^5.1.2",
-    "typeorm": "^0.2.34"
+    "typeorm": "^0.2.45"
   },
   "engines": {
     "node": ">= 16"
